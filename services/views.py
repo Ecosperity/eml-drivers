@@ -5,7 +5,7 @@ from .serializers import DriverSerializer
 from rest_framework import generics, filters
 
 
-class DriverList(generics.ListAPIView):
+class DriverList(generics.ListCreateAPIView):
   search_fields = ['name', 'complaint']
   filter_backends = (filters.SearchFilter)
   queryset = Driver.objects.all()
