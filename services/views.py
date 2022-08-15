@@ -1,6 +1,7 @@
 from .models import Driver
 from .serializers import DriverSerializer
-from rest_framework.generics import ListAPIView, filters
+from rest_framework.generics import ListAPIView
+from rest_framework import filters
 # Create your views here.
 
 class DriverList(ListAPIView):
