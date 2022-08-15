@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -82,11 +83,11 @@ WSGI_APPLICATION = 'emlbackend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'Driver',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'HOST': 'eml-apps.herokuapp.com',
-        'PORT': ''
+        'NAME': 'd62p3icr9134tg',
+        'USER': 'xrwjgmwvmqzerv',
+        'PASSWORD': '18f51b86d961048b46e16d80aa5f66fb3a1219c218f519de1232eeb4d8b945c0',
+        'HOST': 'ec2-54-86-106-48.compute-1.amazonaws.com',
+        'PORT': '5432'
     }
 }
 
@@ -130,5 +131,9 @@ STATIC_ROOT = BASE_DIR / "static"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = "/static"
+django_heroku.settings(locals())
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
