@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'Driver',
         'USER': 'postgres',
         'PASSWORD': 'admin',
-        'HOST': 'localhost',
+        'HOST': 'eml-apps.herokuapp.com',
         'PORT': ''
     }
 }
