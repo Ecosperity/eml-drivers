@@ -30,6 +30,7 @@ SECRET_KEY = 'django-insecure-9w!o_en$6p38uvmln^2b(+x3bp*0qzqwd9@_g=4!a)*@-^i3#a
 DEBUG = False
 
 ALLOWED_HOSTS = ['10.0.2.2', '127.0.0.1', 'localhost', 'https://eml-apps.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://eml-apps.herokuapp.com', '10.0.2.2', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -138,3 +139,4 @@ django_heroku.settings(locals())
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 WHITENOISE_MANIFEST_STRICT = False
+CSRF_COOKIE_SECURE = True
