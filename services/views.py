@@ -9,8 +9,8 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 
 
 
-def DriverList(request, fid):
+class DriverList():
   search_fields = ['name', 'complaint']
   filter_backends = (SearchFilter, filters.DjangoFilterBackend)
-  queryset = Driver.objects.filter(id = fid)
+  queryset = Driver.objects.filter(id = 1)
   serializer_class = DriverSerializer
