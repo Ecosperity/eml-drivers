@@ -5,6 +5,7 @@ from .models import Driver
 from .serializers import DriverSerializer
 from rest_framework import generics
 from django.http import JsonResponse
+from django.core.serializers.json import DjangoJSONEncoder
 # from django.views.decorators.csrf import csrf_exempt, requires_csrf_token
 
 # from django_filters import rest_framework as filters
@@ -23,10 +24,10 @@ from django.http import JsonResponse
 def GetAll(request):
   d = Driver.objects.all()
   data = list(d.values())
-  return JsonResponse(data, safe=False)
+  return JsonResponse(data, encoder=DjangoJSONEncoder, safe=False)
 
 # @requires_csrf_token
 def FilterById(request, fid):
   d = Driver.objects.filter(id=fid)
   data = list(d.values())
-  return JsonResponse(data, safe=False)
+  return JsonResponse(data, encoder=DjangoJSONEncoder, safe=False)
