@@ -17,7 +17,7 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 #   serializer_class = DriverSerializer
 
 
-def DriverD():
+def DriverD(request):
   data = Driver.objects.all()
   # serializer_class = DriverSerializer
   return HTTPResponse(data)
