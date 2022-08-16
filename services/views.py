@@ -21,4 +21,4 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 def DriverList(request):
   d = Driver.objects.all()
   d_json = DriverSerializer
-  return HTTPResponse(d_json, content_type='application/json')
+  return HTTPResponse(d_json)
