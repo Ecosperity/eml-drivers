@@ -20,4 +20,4 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 
 def DriverList(request):
   d = Driver.objects.all()
-  return render(request, 'service/', {'driver': d})
+  return HTTPResponse(d)
