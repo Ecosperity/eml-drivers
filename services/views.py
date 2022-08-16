@@ -9,6 +9,8 @@ from django_filters import rest_framework as filters
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
 
+from django.http import JsonResponse
+
 
 
 # class DriverList(generics.ListCreateAPIView):
@@ -20,5 +22,6 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 
 def DriverList(request):
   d = Driver.objects.all()
-  d_json = DriverSerializer(d)
-  return HTTPResponse(d_json)
+  # d_json = DriverSerializer(d)
+  data = list(d.values())
+  return JsonResponse(data, safe=False)
