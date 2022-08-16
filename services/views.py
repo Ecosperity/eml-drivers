@@ -1,3 +1,4 @@
+from http.client import HTTPResponse
 from django.shortcuts import render
 from .models import Driver
 from .serializers import DriverSerializer
@@ -9,8 +10,14 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 
 
 
-class DriverList(generics.ListCreateAPIView):
-  search_fields = ['name', 'complaint']
-  filter_backends = (SearchFilter, filters.DjangoFilterBackend)
-  queryset = Driver.objects.all()
-  serializer_class = DriverSerializer
+# class DriverList(generics.ListCreateAPIView):
+#   search_fields = ['name', 'complaint']
+#   filter_backends = (SearchFilter, filters.DjangoFilterBackend)
+#   queryset = Driver.objects.all()
+#   serializer_class = DriverSerializer
+
+
+def DriverD(request, fid):
+  data = Driver.objects.all()
+  # serializer_class = DriverSerializer
+  return HTTPResponse(data)
