@@ -2,5 +2,6 @@ from django.urls import path
 from services import views
 
 urlpatterns = [
-    path('driver/<fid>', views.DriverList),
+    path('driver', views.GetAll),
+    path('driver/<fid>', views.FilterById),
 ]

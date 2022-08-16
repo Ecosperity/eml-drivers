@@ -18,7 +18,12 @@ from django.http import JsonResponse
 #   queryset = Driver.objects.all()
 #   serializer_class = DriverSerializer
 
-def DriverList(request, fid):
+def GetAll(request):
+  d = Driver.objects.all()
+  data = list(d.values())
+  return JsonResponse(data, safe=False)
+
+def FilterById(request, fid):
   d = Driver.objects.filter(id=fid)
   data = list(d.values())
   return JsonResponse(data, safe=False)
