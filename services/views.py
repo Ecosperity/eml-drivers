@@ -20,4 +20,4 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 def DriverD(request):
   data = Driver.objects.all()
   # serializer_class = DriverSerializer
-  return HTTPResponse(data)
+  return HTTPResponse(data.get)
