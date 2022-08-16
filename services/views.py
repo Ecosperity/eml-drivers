@@ -18,6 +18,6 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 
 
 def DriverD(request):
-  data = Driver.objects.all()
+  data = Driver.objects.filter(id=1)
   # serializer_class = DriverSerializer
-  return HTTPResponse(data.get)
+  return HTTPResponse(data)
