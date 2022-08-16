@@ -9,7 +9,7 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 
 
 
-class DriverList(generics.ListCreateAPIView):
+class DriverList():
   search_fields = ['name', 'complaint']
   filter_backends = (SearchFilter, filters.DjangoFilterBackend)
   queryset = Driver.objects.all()
