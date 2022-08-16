@@ -10,14 +10,8 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 
 
 
-# class DriverList(generics.ListCreateAPIView):
-#   search_fields = ['name', 'complaint']
-#   filter_backends = (SearchFilter, filters.DjangoFilterBackend)
-#   queryset = Driver.objects.all()
-#   serializer_class = DriverSerializer
-
-
-def DriverD(request):
-  data = Driver.objects.filter(id=1)
-  # serializer_class = DriverSerializer
-  return HTTPResponse(data)
+class DriverList(generics.ListCreateAPIView):
+  search_fields = ['name', 'complaint']
+  filter_backends = (SearchFilter, filters.DjangoFilterBackend)
+  queryset = Driver.objects.all()
+  serializer_class = DriverSerializer
