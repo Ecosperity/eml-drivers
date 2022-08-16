@@ -1,3 +1,5 @@
+from http.client import HTTPResponse
+from urllib import request
 from django.shortcuts import render
 from .models import Driver
 from .serializers import DriverSerializer
@@ -8,7 +10,7 @@ from django.http import JsonResponse
 # from django_filters.rest_framework import DjangoFilterBackend
 # from rest_framework.filters import SearchFilter, OrderingFilter
 
-
+from django.http import JsonResponse
 
 # class DriverList(generics.ListCreateAPIView):
 #   search_fields = ['name', 'complaint']
