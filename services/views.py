@@ -27,7 +27,7 @@ def addData(request):
     fm = DriverForm(request.POST)
   else:
     fm = DriverForm()
-  data = DriverSerializer
+  data = DriverSerializer(fm)
   return HTTPResponse(data)
 
 # class DriverList(View):
