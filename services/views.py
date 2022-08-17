@@ -14,7 +14,7 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 
 def getData(request):
-  set = Driver.objects.all()
+  set = Driver.objects.get(id=1)
   serializer = DriverSerializer(set)
   json_data = JSONRenderer().render(serializer.data)
   return HttpResponse(json_data, content_type='application/json')
