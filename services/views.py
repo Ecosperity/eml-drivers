@@ -14,23 +14,35 @@ from django.http import JsonResponse
 
 from django.http import JsonResponse
 
-class DriverList(View):
+def getData():
+  set = Driver.objects.all()
+  data = list(set.values())
+  return JsonResponse(data, safe=False)
+
+def addData(request):
+  if request.methd == "POST":
+    fm = DriverForm(request.POST)
+  else:
+    fm = DriverForm()
+  return JsonResponse(fm, safe=False)
+
+# class DriverList(View):
   # search_fields = ['name', 'complaint']
   # filter_backends = (SearchFilter, filters.DjangoFilterBackend)
   # queryset = Driver.objects.all()
   # serializer_class = DriverSerializer
 
-  def getData():
-    set = Driver.objects.all()
-    data = list(set.values())
-    return JsonResponse(data, safe=False)
+  # def getData():
+  #   set = Driver.objects.all()
+  #   data = list(set.values())
+  #   return JsonResponse(data, safe=False)
 
-  def addData(request):
-    if request.methd == "POST":
-      fm = DriverForm(request.POST)
-    else:
-      fm = DriverForm()
-    return JsonResponse(fm, safe=False)
+  # def addData(request):
+  #   if request.methd == "POST":
+  #     fm = DriverForm(request.POST)
+  #   else:
+  #     fm = DriverForm()
+  #   return JsonResponse(fm, safe=False)
 
 # def GetAll(request):
 #   d = Driver.objects.all()
