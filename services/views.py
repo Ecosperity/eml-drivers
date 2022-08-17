@@ -8,6 +8,7 @@ from .models import Driver
 from .forms import DriverForm
 from django.views import View
 from django.http import JsonResponse
+from django.contrib.gis.serializers.geojson import Serializer
 # from django.core.serializers.json import DjangoJSONEncoder
 
 # from django_filters import rest_framework as filters
@@ -26,7 +27,7 @@ def addData(request):
     fm = DriverForm(request.POST)
   else:
     fm = DriverForm()
-  data = DriverSerializer.serialize('json', fm.get_queryset())
+  data = Serializer.serialize('json', fm.get_queryset())
   return HTTPResponse(data, content_type="application/json")
 
 # class DriverList(View):
