@@ -1,5 +1,7 @@
 from http.client import HTTPResponse
 from urllib import request
+
+from .serializers import DriverSerializer
 from .models import Driver
 # from .serializers import DriverSerializer
 # from rest_framework import generics
@@ -24,7 +26,8 @@ def addData(request):
     fm = DriverForm(request.POST)
   else:
     fm = DriverForm()
-  return HTTPResponse(fm)
+  data = DriverSerializer.serialize('json', fm.get_queryset())
+  return HTTPResponse(data, content_type="application/json")
 
 # class DriverList(View):
   # search_fields = ['name', 'complaint']
