@@ -36,7 +36,7 @@ def DriverApi(request):
     fid = python_data.get('id', None)
     if id is not None:
       data = Driver.objects.get(id=fid)
-      serializer = DriverSerializer(data, update=python_data)
+      serializer = DriverSerializer(data, data=python_data)
       if serializer.is_valid():
         serializer.save()
         res = {'msg': 'Data Updated Successfully'}
