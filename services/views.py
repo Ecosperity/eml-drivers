@@ -22,3 +22,7 @@ class DriverList(generics.ListCreateAPIView):
   filter_backends = (SearchFilter, filters.DjangoFilterBackend)
   queryset = Driver.objects.all()
   serializer_class = DriverSerializer
+
+  def get(self, request, *args, **kwargs):
+    data = list(self.queryset.values())
+    return JsonResponse(data, safe=False)
