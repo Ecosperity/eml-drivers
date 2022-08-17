@@ -28,7 +28,7 @@ def addData(request):
   else:
     fm = DriverForm()
   data = DriverSerializer
-  return JsonResponse(data, safe=False)
+  return HTTPResponse(data)
 
 # class DriverList(View):
   # search_fields = ['name', 'complaint']
