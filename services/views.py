@@ -33,9 +33,9 @@ def DriverApi(request):
     json_data = request.body
     stream = io.BytesIO(json_data)
     python_data = JSONParser().parse(stream)
-    id = python_data.get('id', None)
+    fid = python_data.get('id', None)
     if id is not None:
-      data = Driver.objects.get('id')
+      data = Driver.objects.get(id=fid)
       serializer = DriverSerializer(data, update=python_data)
       if serializer.is_valid():
         serializer.save()
