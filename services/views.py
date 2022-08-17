@@ -3,7 +3,8 @@ from urllib import request
 from django.shortcuts import render
 from .models import Driver
 # from .serializers import DriverSerializer
-from rest_framework import generics
+# from rest_framework import generics
+from django.views import View
 from django.http import JsonResponse
 from django.core.serializers.json import DjangoJSONEncoder
 
@@ -13,7 +14,7 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 
 from django.http import JsonResponse
 
-class DriverList(generics.ListCreateAPIView):
+class DriverList(View):
   search_fields = ['name', 'complaint']
   filter_backends = (SearchFilter, filters.DjangoFilterBackend)
   queryset = Driver.objects.all()
