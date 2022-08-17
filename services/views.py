@@ -14,13 +14,13 @@ from django.http import JsonResponse
 
 from django.http import JsonResponse
 
-def getData():
-  set = Driver.objects.all()
-  data = list(set.values())
-  return JsonResponse(data, safe=False)
+# def getData():
+#   set = Driver.objects.all()
+#   data = list(set.values())
+#   return JsonResponse(data, safe=False)
 
 def addData(request):
-  if request.methd == "POST":
+  if request.method == "POST":
     fm = DriverForm(request.POST)
   else:
     fm = DriverForm()
