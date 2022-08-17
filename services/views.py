@@ -12,7 +12,7 @@ from django.http import JsonResponse
 
 from django.http import JsonResponse
 
-def getData():
+def getData(request):
   set = Driver.objects.all()
   data = list(set.values())
   return JsonResponse(data, safe=False)
