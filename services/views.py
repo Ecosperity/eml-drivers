@@ -12,21 +12,21 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 
 from django.http import JsonResponse
 
-# def getData(request):
-#   set = Driver.objects.all()
-#   data = list(set.values())
-#   return JsonResponse(data, safe=False)
+def getData(request):
+  set = Driver.objects.all()
+  data = list(set.values())
+  return JsonResponse(data, safe=False)
 
-class DriverList(generics.ListCreateAPIView):
-  search_fields = ['name', 'complaint']
-  filter_backends = (SearchFilter, filters.DjangoFilterBackend)
-  queryset = Driver.objects
-  serializer_class = DriverSerializer
+# class DriverList(generics.ListCreateAPIView):
+#   search_fields = ['name', 'complaint']
+#   filter_backends = (SearchFilter, filters.DjangoFilterBackend)
+#   queryset = Driver.objects
+#   serializer_class = DriverSerializer
 
-  def get(self, request, *args, **kwargs):
-    data = list(self.queryset.all().values())
-    return JsonResponse(data, safe=False)
+#   def get(self, request, *args, **kwargs):
+#     data = list(self.queryset.all().values())
+#     return JsonResponse(data, safe=False)
 
-  def delete(self, request, fid, *args, **kwargs):
-    data = list(self.queryset.filter(id=fid).values())
-    return JsonResponse(data, safe=False)
+#   def delete(self, request, fid, *args, **kwargs):
+#     data = list(self.queryset.filter(id=fid).values())
+#     return JsonResponse(data, safe=False)
