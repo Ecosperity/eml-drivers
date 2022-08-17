@@ -20,7 +20,7 @@ class DriverList(View):
   # queryset = Driver.objects.all()
   # serializer_class = DriverSerializer
 
-  def getData(self):
+  def getData():
     set = Driver.objects.all()
     data = list(set.values())
     return JsonResponse(data, safe=False)
