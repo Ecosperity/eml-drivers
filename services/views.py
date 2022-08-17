@@ -16,11 +16,10 @@ from django.http import JsonResponse
 class DriverList(generics.ListCreateAPIView):
   search_fields = ['name', 'complaint']
   filter_backends = (SearchFilter, filters.DjangoFilterBackend)
-  # queryset = Driver.objects.all()
+  queryset = Driver.objects.all()
   # serializer_class = DriverSerializer
   def getData(self, request):
-    set = Driver.objects.all()
-    data = list(set.values())
+    data = list(self.queryset.values())
     return JsonResponse(data, safe=False)
 
 # def GetAll(request):
