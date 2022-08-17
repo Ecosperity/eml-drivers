@@ -27,4 +27,6 @@ class DriverList(generics.ListCreateAPIView):
     data = list(self.queryset.all().values())
     return JsonResponse(data, safe=False)
 
-  # def delete(self, request, *args, **kwargs):
+  def delete(self, request, fid, *args, **kwargs):
+    data = list(self.queryset.filter(id=fid).values())
+    return JsonResponse(data, safe=False)
