@@ -4,6 +4,7 @@ from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
 from django.http import HttpResponse
 import io
+import json
 
 def DriverApi(request):
   # if (request.method == "GET"):
@@ -18,10 +19,11 @@ def DriverApi(request):
   #     return HttpResponse(json_data, content_type='application/json')
 
   if (request.method == "GET"):
-    data = Driver.objects.all().order_by('id')
+    # data = Driver.objects.all()
     # data_list = list(data.values())
-    serializer = DriverSerializer(data)
-    json_data = JSONRenderer().render(serializer.data)
+    # serializer = DriverSerializer(data)
+    # json_data = JSONRenderer().render(serializer.data)
+    json_data = json.dumps([dict(item) for item in Driver.objects.all().values()])
     return HttpResponse(json_data, content_type='application/json')
   
   if (request.method == "POST"):
