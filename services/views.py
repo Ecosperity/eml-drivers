@@ -45,3 +45,24 @@ def DriverApi(request):
     res = {'msg': 'Invalid Data'}
     json_data = JSONRenderer().render(res)
     return HttpResponse(json_data, content_type='application/json')
+
+  
+  if (request.method == "DELETE"):
+    json_data = request.body
+    stream = io.BytesIO(json_data)
+    python_data = JSONParser().parse(stream)
+    fid = python_data.get('id', None)
+    if id is not None:
+      try:
+        data = Driver.objects.get(id=fid)
+      except Driver.DoesNotExist:
+        res = {'msg': 'Data does not exsit'}
+        json_data = JSONRenderer().render(res)
+        return HttpResponse(json_data, content_type='application/json')
+      data.delete()
+      res = {'msg': 'Data Deleted Successfully'}
+      json_data = JSONRenderer().render(res)
+      return HttpResponse(json_data, content_type='application/json')
+    res = {'msg': 'Please provide Id to Delete'}
+    json_data = JSONRenderer().render(res)
+    return HttpResponse(json_data, content_type='application/json')
