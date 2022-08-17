@@ -2,5 +2,5 @@ from django.urls import path
 from services import views
 
 urlpatterns = [
-    path('driver/', views.getData()),
+    path('driver/', views.getData),
 ]
