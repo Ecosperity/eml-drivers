@@ -13,6 +13,6 @@ def DriverApi(request):
     fid = python_data.get('id')
     if id is not None:
       data = Driver.objects.get(id=fid)
-      serializer = DriverSerializer(set)
+      serializer = DriverSerializer(data)
       json_data = JSONRenderer().render(serializer.data)
       return HttpResponse(json_data, content_type='application/json')
