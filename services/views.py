@@ -28,3 +28,20 @@ def DriverApi(request):
       json_data = JSONRenderer().render(res)
       return HttpResponse(json_data, content_type='application/json')
     return HttpResponse(JSONRenderer().render(serializer.errors), content_type='application/json')
+
+  if (request.method == "PUT"):
+    json_data = request.body
+    stream = io.BytesIO(json_data)
+    python_data = JSONParser().parse(stream)
+    id = python_data.get('id', None)
+    if id is not None:
+      data = Driver.objects.get('id')
+      serializer = DriverSerializer(data, update=python_data)
+      if serializer.is_valid():
+        serializer.save()
+        res = {'msg': 'Data Updated Successfully'}
+        json_data = JSONRenderer().render(res)
+        return HttpResponse(json_data, content_type='application/json')
+    res = {'msg': 'Invalid Data'}
+    json_data = JSONRenderer().render(res)
+    return HttpResponse(json_data, content_type='application/json')

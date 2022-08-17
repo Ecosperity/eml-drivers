@@ -5,3 +5,9 @@ class DriverSerializer(serializers.ModelSerializer):
   class Meta:
     model = Driver
     fields = '__all__'
+
+    def update(self, instance, validated_data):
+      instance.name = validated_data.get('name', instance.name)
+      instance.complaint = validated_data.get('complaint', instance.complaint)
+      instance.save()
+      return instance
