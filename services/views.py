@@ -18,7 +18,7 @@ def DriverApi(request):
   #     return HttpResponse(json_data, content_type='application/json')
 
   if (request.method == "GET"):
-    data = Driver.objects.get.all()
+    data = Driver.objects.all()
     data_list = list(data.values())
     serializer = DriverSerializer(data_list)
     json_data = JSONRenderer().render(serializer.data)
