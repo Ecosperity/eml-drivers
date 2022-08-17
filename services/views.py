@@ -8,7 +8,7 @@ from .models import Driver
 from .forms import DriverForm
 from django.views import View
 from django.http import JsonResponse
-from rest_framework import Serializers
+from rest_framework import serializers
 # from django.core.serializers.json import DjangoJSONEncoder
 
 # from django_filters import rest_framework as filters
@@ -27,7 +27,7 @@ def addData(request):
     fm = DriverForm(request.POST)
   else:
     fm = DriverForm()
-  data = Serializers.serialize('json', fm.get_queryset())
+  data = DriverSerializer
   return HTTPResponse(data, content_type="application/json")
 
 # class DriverList(View):
