@@ -3,5 +3,5 @@ from services import views
 
 urlpatterns = [
     path('driver/', views.DriverList.getData()),
-    path('driverform/', views.DriverList.addData()),
+    path('driverform/', views.DriverList.addData),
 ]

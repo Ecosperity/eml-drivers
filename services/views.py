@@ -25,7 +25,7 @@ class DriverList(View):
     data = list(set.values())
     return JsonResponse(data, safe=False)
 
-  def addData(self):
+  def addData(request):
     if request.methd == "POST":
       fm = DriverForm(request.POST)
     else:
