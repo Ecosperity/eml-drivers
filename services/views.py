@@ -3,6 +3,7 @@ from urllib import request
 from .models import Driver
 # from .serializers import DriverSerializer
 # from rest_framework import generics
+from .forms import DriverForm
 from django.views import View
 from django.http import JsonResponse
 # from django.core.serializers.json import DjangoJSONEncoder
@@ -23,6 +24,13 @@ class DriverList(View):
     set = Driver.objects.all()
     data = list(set.values())
     return JsonResponse(data, safe=False)
+
+  def addData(self):
+    if request.methd == "POST":
+      fm = DriverForm(request.POST)
+    else:
+      fm = DriverForm()
+    return JsonResponse(fm, safe=False)
 
 # def GetAll(request):
 #   d = Driver.objects.all()
