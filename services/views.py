@@ -8,7 +8,7 @@ import json
 
 def DriverApi(request):
   if (request.method == "GET"):
-    json_data = json.dumps([dict(item) for item in Registration.objects.Register.values()])
+    json_data = json.dumps([dict(item) for item in Registration.objects.values()])
     return HttpResponse(json_data, content_type='application/json')
   
   if (request.method == "POST"):
@@ -29,7 +29,7 @@ def DriverApi(request):
     python_data = JSONParser().parse(stream)
     fid = python_data.get('id', None)
     if id is not None:
-      data = Registration.objects.Register.get(id=fid)
+      data = Registration.objects.get(id=fid)
       serializer = DriverSerializer(data, data=python_data)
       if serializer.is_valid():
         serializer.save()
@@ -48,7 +48,7 @@ def DriverApi(request):
     fid = python_data.get('id', None)
     if id is not None:
       try:
-        data = Registration.objects.Register.get(id=fid)
+        data = Registration.objects.get(id=fid)
       except Registration.DoesNotExist:
         res = {'msg': 'Data does not exsit'}
         json_data = JSONRenderer().render(res)

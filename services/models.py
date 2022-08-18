@@ -1,10 +1,5 @@
-from tokenize import Name
 from django.db import models
 
-# Create your models here.
-class VehicleManager(models.Manager): 
-  def Register(self):
-    return self
 
 class Registration(models.Model):
   Name = models.CharField(max_length=30)
@@ -19,6 +14,4 @@ class Registration(models.Model):
   InsDuration = models.PositiveIntegerField
   ChassisNo = models.CharField(max_length=30)
   modelNo = models.CharField(max_length=30)
-
-  objects = VehicleManager()
 
