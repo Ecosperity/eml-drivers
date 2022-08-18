@@ -1,4 +1,4 @@
-from .models import Driver
+from .models import Registration
 from .serializers import DriverSerializer
 from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
@@ -7,19 +7,8 @@ import io
 import json
 
 def DriverApi(request):
-  # if (request.method == "GET"):
-  #   json_data = request.body
-  #   stream = io.BytesIO(json_data)
-  #   python_data = JSONParser().parse(stream)
-  #   fid = python_data.get('id')
-  #   if id is not None:
-  #     data = Driver.objects.get(id=fid)
-  #     serializer = DriverSerializer(data)
-  #     json_data = JSONRenderer().render(serializer.data)
-  #     return HttpResponse(json_data, content_type='application/json')
-
   if (request.method == "GET"):
-    json_data = json.dumps([dict(item) for item in Driver.objects.all().values()])
+    json_data = json.dumps([dict(item) for item in Registration.Register.objects.all().values()])
     return HttpResponse(json_data, content_type='application/json')
   
   if (request.method == "POST"):
@@ -40,7 +29,7 @@ def DriverApi(request):
     python_data = JSONParser().parse(stream)
     fid = python_data.get('id', None)
     if id is not None:
-      data = Driver.objects.get(id=fid)
+      data = Registration.Register.objects.get(id=fid)
       serializer = DriverSerializer(data, data=python_data)
       if serializer.is_valid():
         serializer.save()
@@ -59,8 +48,8 @@ def DriverApi(request):
     fid = python_data.get('id', None)
     if id is not None:
       try:
-        data = Driver.objects.get(id=fid)
-      except Driver.DoesNotExist:
+        data = Registration.Register.objects.get(id=fid)
+      except Registration.Register.DoesNotExist:
         res = {'msg': 'Data does not exsit'}
         json_data = JSONRenderer().render(res)
         return HttpResponse(json_data, content_type='application/json')
