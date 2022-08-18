@@ -27,8 +27,13 @@ class ComplaintSerializer(serializers.ModelSerializer):
     fields = '__all__'
 
   def update(self, instance, validated_data):
+    instance.Name = validated_data.get('Name', instance.Name)
+    instance.City = validated_data.get('City', instance.City)
+    instance.Ticket = validated_data.get('Ticket', instance.Ticket)
     instance.Subject = validated_data.get('Subject', instance.Subject)
     instance.Status = validated_data.get('Status', instance.Status)
+    instance.Time = validated_data.get('Time', instance.Time)
+    instance.VID = validated_data.get('VID', instance.VID)
     instance.Progress = validated_data.get('Progress', instance.Progress)
     instance.save()
     return instance

@@ -1,3 +1,4 @@
+from functools import partial
 from .models import Registration, Complaints
 from .serializers import RegisterSerializer, ComplaintSerializer
 from rest_framework.parsers import JSONParser
@@ -32,6 +33,23 @@ def ComplaintApi(request):
     if id is not None:
       data = Complaints.objects.get(id=fid)
       serializer = ComplaintSerializer(data, data=python_data)
+      if serializer.is_valid():
+        serializer.save()
+        res = {'msg': 'Data Updated Successfully'}
+        json_data = JSONRenderer().render(res)
+        return HttpResponse(json_data, content_type='application/json')
+    res = {'msg': 'Invalid Data'}
+    json_data = JSONRenderer().render(res)
+    return HttpResponse(json_data, content_type='application/json')
+
+  if (request.method == "PATCH"):
+    json_data = request.body
+    stream = io.BytesIO(json_data)
+    python_data = JSONParser().parse(stream)
+    fid = python_data.get('id', None)
+    if id is not None:
+      data = Complaints.objects.get(id=fid)
+      serializer = ComplaintSerializer(data, data=python_data, partial = True)
       if serializer.is_valid():
         serializer.save()
         res = {'msg': 'Data Updated Successfully'}
@@ -95,8 +113,24 @@ def RegisterApi(request):
     res = {'msg': 'Invalid Data'}
     json_data = JSONRenderer().render(res)
     return HttpResponse(json_data, content_type='application/json')
-
   
+  if (request.method == "PATCH"):
+    json_data = request.body
+    stream = io.BytesIO(json_data)
+    python_data = JSONParser().parse(stream)
+    fid = python_data.get('id', None)
+    if id is not None:
+      data = Registration.objects.get(id=fid)
+      serializer = RegisterSerializer(data, data=python_data, partial = True)
+      if serializer.is_valid():
+        serializer.save()
+        res = {'msg': 'Data Updated Successfully'}
+        json_data = JSONRenderer().render(res)
+        return HttpResponse(json_data, content_type='application/json')
+    res = {'msg': 'Invalid Data'}
+    json_data = JSONRenderer().render(res)
+    return HttpResponse(json_data, content_type='application/json')
+
   if (request.method == "DELETE"):
     json_data = request.body
     stream = io.BytesIO(json_data)
