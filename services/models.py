@@ -15,3 +15,12 @@ class Registration(models.Model):
   ChassisNo = models.CharField(max_length=30)
   modelNo = models.CharField(max_length=30)
 
+class Complaints(models.Model):
+  Name = models.CharField(max_length=30)
+  City = models.CharField(max_length=30)
+  Ticket = models.CharField(max_length=30)
+  Subject = models.CharField(max_length=30)
+  Status = models.CharField(max_length=30)
+  Time = models.CharField(max_length=30)
+  VID = models.CharField(max_length=30)
+  Progress = models.CharField(max_length=30)
