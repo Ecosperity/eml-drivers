@@ -19,6 +19,8 @@ class RegisterSerializer(serializers.ModelSerializer):
     instance.InsDuration = validated_data.get('InsDuration', instance.InsDuration)
     instance.ChassisNo = validated_data.get('ChassisNo', instance.ChassisNo)
     instance.modelNo = validated_data.get('modelNo', instance.modelNo)
+    instance.save()
+    return instance
 
 
 class ComplaintSerializer(serializers.ModelSerializer):
