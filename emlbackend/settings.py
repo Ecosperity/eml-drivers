@@ -10,7 +10,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1, localhost").split(",")
-CSRF_TRUSTED_ORIGINS = ['http://10.0.2.2', 'http://127.0.0.1', 'http://localhost', 'https://eml-apps.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['http://10.0.2.2', 'http://127.0.0.1', 'http://localhost', 'https://clownfish-app-lfvmm.ondigitalocean.app']
 CORS_ORIGIN_ALLOW_ALL = True
 
 
@@ -24,9 +24,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
+    # 'rest_framework',
     'services',
-    'corsheaders'
+    # 'corsheaders'
 ]
 
 MIDDLEWARE = [
