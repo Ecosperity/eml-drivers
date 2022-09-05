@@ -71,10 +71,10 @@ DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db',
-        'USER': 'db',
-        'PASSWORD': 'AVNS_YrNCA2Z2fM-Eqrd0',
-        'HOST': 'app-1749ad02-7410-4387-a8cb-5afaf866f3b1-do-user-12301848-0.b.db.ondigitalocean.com',
+        'NAME': 'driver-db',
+        'USER': 'driver-db',
+        'PASSWORD': 'AVNS_7uJUlfpk-0V_eoXIfqa',
+        'HOST': 'app-ad9dbc6d-9470-4178-a76f-a46cc3ae89e9-do-user-12301848-0.b.db.ondigitalocean.com',
         'PORT': '25060',
         'SSLMODE': 'require'
     }
