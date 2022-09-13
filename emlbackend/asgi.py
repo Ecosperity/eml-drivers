@@ -5,8 +5,6 @@ import services.routing
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'emlbackend.settings')
 
-application = get_asgi_application()
-
 application = ProtocolTypeRouter({
     'http': get_asgi_application(),
     'websocket': URLRouter(services.routing.websocket_urlpatterns),

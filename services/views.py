@@ -1,3 +1,4 @@
+from functools import partial
 from .models import Registration, Complaints
 from .serializers import RegisterSerializer, ComplaintSerializer
 from rest_framework.parsers import JSONParser
@@ -6,29 +7,6 @@ from django.http import HttpResponse
 import io
 import json
 
-
-def order(request , order_id):
-    order = Complaints.objects.filter(order_id=order_id).first()
-    json_data = json.dumps([dict(item) for item in order])
-    return HttpResponse(json_data, content_type='application/json')
-    # if order is None:
-    #     return redirect('/')
-    
-    # context = {'order' : order}
-    # return render(request , 'order.html', context)
-
-# def order_pizza(request):
-#     user = request.Name
-#     data = json.loads(request.body)
-    
-#     try:
-#         pizza =  Complaints.objects.get(id=data.get('id'))
-#         order = Complaints(user=user, pizza=pizza , amount = pizza.price)
-#         order.save()
-#         return HttpResponse('Success', content_type='application/json')
-        
-#     except Complaints.DoesNotExist:
-#         return HttpResponse('Failed', content_type='application/json')
 
 def ComplaintApi(request):
   if (request.method == "GET"):
