@@ -1,4 +1,3 @@
-from functools import partial
 from .models import Registration, Complaints
 from .serializers import RegisterSerializer, ComplaintSerializer
 from rest_framework.parsers import JSONParser
