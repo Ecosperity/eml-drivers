@@ -2,5 +2,5 @@ from django.urls import path
 from . import consumers
 
 websocket_urlpatterns = [
-    path('', consumers.mySock.as_asgi())
+    path('<order_id>', consumers.OrderProgress.as_asgi())
 ]
