@@ -84,7 +84,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("redis://redis-db-do-user-12301848-0.b.db.ondigitalocean.com")],
+            "hosts": [("redis://redis-db-do-user-12301848-0.b.db.ondigitalocean.com", 6379)],
         },
     },
 }
